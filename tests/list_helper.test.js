@@ -48,7 +48,44 @@ describe("total likes", () => {
         __v: 0,
       },
     ];
-    const result = listHelper.totalLikes(blogs);
-    expect(result).toBe(1110);
+    const resultOfTotalLikes = listHelper.totalLikes(blogs);
+    expect(resultOfTotalLikes).toBe(1110);
+  });
+
+  test("of a favourite blog with highest likes", () => {
+    const blogs = [
+      {
+        _id: "64f1852ababd916115fc6ef4",
+        title: "Example Blog Title",
+        author: "John Doe",
+        url: "https://example.com",
+        likes: 10,
+        __v: 0,
+      },
+      {
+        _id: "64f189a9babd916115fc6ef7",
+        title: "The Benefits of Regular Exercise",
+        author: "Jane Smith",
+        url: "abcdefgh",
+        likes: 1000,
+        __v: 0,
+      },
+      {
+        _id: "64f20dfa1c84bb4cff2fad45",
+        title: "new blog",
+        author: "Jane Smith",
+        url: "abcde",
+        likes: 100,
+        __v: 0,
+      },
+    ];
+
+    const expected = {
+      title: "The Benefits of Regular Exercise",
+      author: "Jane Smith",
+      likes: 1000,
+    };
+    const resultOfFavourite = listHelper.favouriteBlog(blogs);
+    expect(resultOfFavourite).toEqual(expected);
   });
 });
