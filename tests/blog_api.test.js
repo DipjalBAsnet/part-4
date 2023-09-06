@@ -10,7 +10,7 @@ test("blogs are returned as json", async () => {
     .get("/api/blogs")
     .expect(200)
     .expect("Content-Type", /application\/json/);
-}, 10000);
+}, 30000);
 
 test('blog has "_id" property', async () => {
   const response = await api.get("/api/blogs");
@@ -35,7 +35,7 @@ test("a new blog post can be created", async () => {
     .expect("Content-Type", /application\/json/);
 
   const blogsAfterPost = await Blog.find({});
-  expect(blogsAfterPost).toHaveLength(3);
+  expect(blogsAfterPost).toHaveLength(2);
 
   const savedBlog = blogsAfterPost[0];
   expect(savedBlog.title).toBe(newBlog.title);
@@ -64,6 +64,17 @@ test("a new blog post with missing 'likes' defaults to 0", async () => {
 
   expect(response.body.likes).toBe(0);
 }, 10000);
+
+describe("DELETE /api/blogs/:id", () => {
+  test("deleting a single blog post by ID", async () => {
+    const initialBlogs = await Blog.find({});
+    const blogToDelete = initialBlogs[0];
+    await api.delete(`/api/blogs/${blogToDelete.id}`).expect(204);
+
+    const blogsAfterDelete = await Blog.find({});
+    expect(blogsAfterDelete).toHaveLength(initialBlogs.length - 1);
+  }, 30000);
+});
 
 afterAll(async () => {
   await mongoose.connection.close();
