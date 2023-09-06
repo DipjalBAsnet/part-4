@@ -35,7 +35,7 @@ test("a new blog post can be created", async () => {
     .expect("Content-Type", /application\/json/);
 
   const blogsAfterPost = await Blog.find({});
-  expect(blogsAfterPost).toHaveLength(2);
+  expect(blogsAfterPost).toHaveLength(3);
 
   const savedBlog = blogsAfterPost[0];
   expect(savedBlog.title).toBe(newBlog.title);
@@ -47,6 +47,22 @@ test("a new blog post can be created", async () => {
   expect(response.body.author).toBe(newBlog.author);
   expect(response.body.url).toBe(newBlog.url);
   expect(response.body.likes).toBe(newBlog.likes);
+}, 10000);
+
+test("a new blog post with missing 'likes' defaults to 0", async () => {
+  const newBlog = {
+    title: "Test Blog",
+    author: "Test Author",
+    url: "http://testurl.com",
+  };
+
+  const response = await api
+    .post("/api/blogs")
+    .send(newBlog)
+    .expect(201)
+    .expect("Content-Type", /application\/json/);
+
+  expect(response.body.likes).toBe(0);
 }, 10000);
 
 afterAll(async () => {
