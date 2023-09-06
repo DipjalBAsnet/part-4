@@ -76,6 +76,24 @@ describe("DELETE /api/blogs/:id", () => {
   }, 30000);
 });
 
+describe("PUT /api/blogs/:id", () => {
+  test("updating the number of likes for a blog post", async () => {
+    const initialBlogs = await Blog.find({});
+    const blogToUpdate = initialBlogs[0];
+
+    const updatedBlogData = {
+      likes: 42,
+    };
+
+    const response = await api
+      .put(`/api/blogs/${blogToUpdate.id}`)
+      .send(updatedBlogData)
+      .expect(200);
+
+    expect(response.body.likes).toBe(updatedBlogData.likes);
+  });
+});
+
 afterAll(async () => {
   await mongoose.connection.close();
 });
