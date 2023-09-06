@@ -3,8 +3,8 @@ Content-Type: application/json
 Authorization: Bearer YourAccessToken
 
 {
-  "title": "new blog",
-  "author": "Jane Smith",
-  "url": "abcde",
-  "likes": 100
+  "title":"old blog",
+  "author": "adam Smith",
+  "url": "abc",
+  "likes": 10
 }
