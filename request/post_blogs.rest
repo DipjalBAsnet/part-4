@@ -1,10 +1,11 @@
 POST http://localhost:3003/api/blogs
 Content-Type: application/json
-Authorization: Bearer YourAccessToken
+
 
 {
-  "title":"old blog",
-  "author": "adam Smith",
-  "url": "abc",
-  "likes": 10
+  "title":"dipjal's blog along with user id",
+  "author": "bikash",
+  "url": "itisurl",
+  "likes": 455,
+  "userId": "65067c8f3e4f63ab27e1ba0a"
 }
