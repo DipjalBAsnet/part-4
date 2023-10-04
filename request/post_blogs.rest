@@ -2,7 +2,7 @@ POST http://localhost:3003/api/blogs
 
 Content-Type: application/json
 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJpa2FzaCIsImlkIjoiNjUwODE5OTg5NTkxZTAyZTVjZWVmY2I1IiwiaWF0IjoxNjk1MDMyMzU1LCJleHAiOjE2OTUwMzU5NTV9.Jo9x7LXxMH_bv-Yr-2orjGv01SHnbgdVk8NWooc15rE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImR1cmdhIiwiaWQiOiI2NTFiZWVhZWUwY2E3ZTM1ZjlmNDQzNmQiLCJpYXQiOjE2OTYzMjk0MjUsImV4cCI6MTY5NjU0NTQyNX0.P-ktkn2KJlZ9XcC_4IzwhBipES5HKOKXrSuVRhZpcKo
 
 {
   "title":"dipjal",

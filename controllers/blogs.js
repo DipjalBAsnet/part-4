@@ -5,7 +5,10 @@ const User = require("../models/user");
 const jwt = require("jsonwebtoken");
 
 blogsRouter.get("/", async (request, response) => {
-  const blogs = await Blog.find({});
+  const blogs = await Blog.find({}).populate({
+    path: "user",
+    select: "username",
+  });
   response.json(blogs);
 });
 
@@ -66,7 +69,6 @@ blogsRouter.put("/:id", async (request, response) => {
   console.log("New likes:", likes);
 
   try {
-    // Find the blog by ID and update the likes
     const updatedBlog = await Blog.findByIdAndUpdate(
       id,
       { likes },

@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "test": "jest --verbose"
+    "test": "jest --verbose",
+    "start:test": "NODE_ENV=test node index.js"
   },
   "author": "",
   "license": "ISC",
@@ -22,7 +23,6 @@
   },
   "devDependencies": {
     "jest": "^29.6.4",
-    "nodemon": "^3.0.1",
     "supertest": "^6.3.3"
   },
   "jest": {
@@ -30,3 +30,4 @@
     "globalTeardown": "./tests/teardown.js"
   }
 }
+
